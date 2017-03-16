@@ -55,5 +55,6 @@ public class Application {
         imageRepository.save(new Image("/home", "Third Cat", "http://www.friendsofbcas.org/sites/default/files/header%20barncat.jpg"));
         imageRepository.save(new Image("/home", "Fourth Cat", "http://groomiespet.com/wp-content/uploads/2015/07/cat.jpg"));
 
+
     }
 }
