@@ -1,5 +1,7 @@
 package com.szymon.controller;
 
+import com.szymon.model.Link;
+import com.szymon.service.ImageService;
 import com.szymon.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +14,15 @@ public class ShopController {
     @Autowired
     private LinkService linkService;
 
+    @Autowired
+    private ImageService imageService;
+
     @RequestMapping("shop")
     public ModelAndView shop() {
         ModelAndView modelAndView = new ModelAndView("shop");
         modelAndView.addObject("navigationLinks", linkService.fetchLinks());
-
+        modelAndView.addObject("mainLink", new Link("Pet Shop", "/shop"));
+        modelAndView.addObject("carouselImages", imageService.fetchImages());
         return modelAndView;
     }
 }
