@@ -54,6 +54,7 @@ public class Application {
         linkRepository.save(new Link("About", "/home"));
         linkRepository.save(new Link("Service", "/home"));
         linkRepository.save(new Link("Contact", "/home"));
+        linkRepository.save(new Link("Add Product", "/product-form"));
 
         imageRepository.save(new Image("/home", "First Cat", "http://www.oregonhumane.org/wp-content/uploads/Find_Homes_For_Pets.jpg"));
         imageRepository.save(new Image("/home", "Third Cat", "http://www.friendsofbcas.org/sites/default/files/header%20barncat.jpg"));

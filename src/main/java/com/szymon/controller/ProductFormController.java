@@ -29,8 +29,8 @@ public class ProductFormController {
 
     @RequestMapping(value="/product-form", method= RequestMethod.POST)
     public ModelAndView modelAndView(@ModelAttribute Product product) {
-
+        ModelAndView modelAndView = new ModelAndView("redirect:/shop");
         productsService.save(product);
-        return modelAndView();
+        return modelAndView;
     }
 }
