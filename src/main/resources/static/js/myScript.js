@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function () {
-    $("button").on("click", function () {
+    $("#switch-category-fields").on("click", function () {
             if ($(this).text() == "New Category") {
                 $(this).text("List");
                 $("#Category2").attr('type', 'text');
@@ -15,6 +15,12 @@ $(document).ready(function () {
             }
         }
     );
+    $('#form-id').submit(function () {
+        var parent =$('#switch-category-fields').parent();
+        var valueToSubmit=parent.find(":visible").val();
+        $('#category-hidden').val(valueToSubmit);
+        return true;
+    })
 });
 
 
