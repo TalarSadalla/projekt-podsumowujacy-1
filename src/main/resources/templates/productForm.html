@@ -59,60 +59,64 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
-
-        <div class="col-md-3">
-            <p class="lead">Shop Name</p>
-            <div class="list-group" >
-                <a href="#" th:each="link: ${categories}" th:href="${link.link}" class="list-group-item" th:text="${link.name}" th:classappend="${link.name} == ${activeCategory} ? active:''">Category 1</a>
+    <form class="form-horizontal" action="#" th:action="@{/product-form}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Title">Title:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Title" placeholder="Enter title" th:field="*{title}"/>
             </div>
         </div>
-
-        <div class="col-md-9">
-
-            <div class="row carousel-holder">
-
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li th:each="imageModel,iterStat : ${carouselImages}" data-target="#carousel-example-generic" th:attr="data-slide-to=${iterStat.index}"
-                                th:classappend="${iterStat.index} == 0 ? active : ''"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item" th:each="imageModel,iterStat : ${carouselImages}" th:classappend="${iterStat.index} == 0 ? active : ''">
-                                <img class="slide-image" th:src="${imageModel.path}" src="http://placehold.it/800x300" th:alt="${imageModel.altText}"/>
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
-
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Description">Description:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="Description" rows="5" th:field="*{description}"></textarea>
             </div>
-
-            <div class="row">
-
-                <div th:each="product: ${products}" class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img th:src="${product.smallImage.path}" src="http://placehold.it/320x150" th:alt="${product.smallImage.altText}" alt=""/>
-                        <div class="caption">
-                            <h4 class="pull-right" th:text="${product.price}">$24.99</h4>
-                            <h4><a href="#" th:href="'/products/' + ${product.id}" th:text="${product.title}">First Product</a>
-                            </h4>
-                            <p th:text="${product.description}">See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Price">Price:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Price" placeholder="Enter price" th:field="*{price}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="smallImage">Small Image:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="smallImage" placeholder="Enter url adress of image:" th:field="*{smallImage.path}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="smallImageAlt">Small Image alt text::</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="smallImageAlt" placeholder="Enter text:" th:field="*{smallImage.altText}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="bigImage">Big Image:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="bigImage" placeholder="Enter url adress of image:" th:field="*{bigImage.path}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="bigImageAlt">Big Image alt text::</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="bigImageAlt" placeholder="Enter text:" th:field="*{bigImage.altText}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Category">Category:</label>
+            <div class="col-sm-10">
+                <select th:field="*{category}" class="form-control" id="Category">
+                    <option th:each="link: ${categories}" th:value="${#strings.toLowerCase(link.name)}" th:text="${link.name}" >1</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
 
-    </div>
 
 </div>
 <!-- /.container -->

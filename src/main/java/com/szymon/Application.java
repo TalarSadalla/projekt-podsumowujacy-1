@@ -8,14 +8,11 @@ import com.szymon.repository.ImageRepository;
 import com.szymon.repository.LinkRepository;
 import com.szymon.repository.ProductRepository;
 import com.szymon.repository.UserRepository;
-import com.szymon.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Application {
@@ -74,9 +71,13 @@ public class Application {
         Image smallImage3 = new Image("http://1.bp.blogspot.com/-bqJPGSx7ENU/VaL620oawgI/AAAAAAAAFqY/y1PXHn4clB8/s1600/CatWinterLucky.jpg", "siberian cat", "http://1.bp.blogspot.com/-bqJPGSx7ENU/VaL620oawgI/AAAAAAAAFqY/y1PXHn4clB8/s1600/CatWinterLucky.jpg");
         Image bigImage3 = new Image("http://zoomia.pl/files/i/10/74/koty-sprzedam-maine-coon_big21560_10745773451331497885.jpg?galeria", "Siberian cat", "http://zoomia.pl/files/i/10/74/koty-sprzedam-maine-coon_big21560_10745773451331497885.jpg?galeria");
 
+        Image smallImage4 = new Image("http://1.bp.blogspot.com/-bqJPGSx7ENU/VaL620oawgI/AAAAAAAAFqY/y1PXHn4clB8/s1600/CatWinterLucky.jpg", "siberian cat", "http://1.bp.blogspot.com/-bqJPGSx7ENU/VaL620oawgI/AAAAAAAAFqY/y1PXHn4clB8/s1600/CatWinterLucky.jpg");
+        Image bigImage4 = new Image("http://zoomia.pl/files/i/10/74/koty-sprzedam-maine-coon_big21560_10745773451331497885.jpg?galeria", "Siberian cat", "http://zoomia.pl/files/i/10/74/koty-sprzedam-maine-coon_big21560_10745773451331497885.jpg?galeria");
+
         productRepository.save(new Product("Siberian cat", "Cats. This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 25.0, smallImage, bigImage, "cats"));
         productRepository.save(new Product("Siberian cat", "Cats. This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 25.0, smallImage1, bigImage1, "cats"));
         productRepository.save(new Product("Siberian cat", "Dogs. This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 25.0, smallImage2, bigImage2, "dogs"));
         productRepository.save(new Product("Siberian cat", "Dogs. This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 25.0, smallImage3, bigImage3, "dogs"));
+        productRepository.save(new Product("Siberian cat", "Lama. This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 25.0, smallImage4, bigImage4, "lama"));
     }
 }
