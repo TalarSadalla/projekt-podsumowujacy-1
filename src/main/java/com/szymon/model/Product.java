@@ -1,37 +1,39 @@
 package com.szymon.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Product {
 
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String title;
 
-//    @Column(length = 1023)
+    @Column(length = 20000)
     private String description;
 
     private Double price;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Image smallImage;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Image bigImage;
+
+    private String category;
 
     public Product() {
     }
 
-    public Product(String title, String description, Double price, Image smallImage, Image bigImage) {
+    public Product(String title, String description, Double price, Image smallImage, Image bigImage, String category) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.smallImage = smallImage;
         this.bigImage = bigImage;
+        this.category = category;
     }
 
     public Long getId() {
@@ -40,6 +42,14 @@ public class Product {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTitle() {

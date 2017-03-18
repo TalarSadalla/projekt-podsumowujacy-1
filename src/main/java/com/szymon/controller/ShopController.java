@@ -7,6 +7,7 @@ import com.szymon.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -28,6 +29,16 @@ public class ShopController {
         modelAndView.addObject("mainLink", new Link("Pet Shop", "/shop"));
         modelAndView.addObject("carouselImages", imageService.fetchImages());
         modelAndView.addObject("products", productsService.fetchAllProducts());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "shop", params = {"category"})
+    public ModelAndView shopWithCategory(@RequestParam String category) {
+        ModelAndView modelAndView = new ModelAndView("shop");
+        modelAndView.addObject("navigationLinks", linkService.fetchLinks());
+        modelAndView.addObject("mainLink", new Link("Pet Shop", "/shop"));
+        modelAndView.addObject("carouselImages", imageService.fetchImages());
+        modelAndView.addObject("products", productsService.findProductsByCategory(category));
         return modelAndView;
     }
 }
