@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 public class ShopController {
 
@@ -24,9 +26,10 @@ public class ShopController {
     private ProductsService productsService;
 
     @RequestMapping("shop")
-    public ModelAndView shop() {
+    public ModelAndView shop(Principal principal) {
+
         ModelAndView modelAndView = new ModelAndView("shop");
-        modelAndView.addObject("navigationLinks", linkService.fetchLinks());
+        modelAndView.addObject("navigationLinks", linkService.fetchLinks(principal));
         modelAndView.addObject("mainLink", new Link("Pet Shop", "/shop"));
         modelAndView.addObject("carouselImages", imageService.fetchImages());
         modelAndView.addObject("products", productsService.fetchAllProducts());
@@ -35,9 +38,9 @@ public class ShopController {
     }
 
     @RequestMapping(value = "shop", params = {"category"})
-    public ModelAndView shopWithCategory(@RequestParam String category) {
+    public ModelAndView shopWithCategory(@RequestParam String category, Principal principal) {
         ModelAndView modelAndView = new ModelAndView("shop");
-        modelAndView.addObject("navigationLinks", linkService.fetchLinks());
+        modelAndView.addObject("navigationLinks", linkService.fetchLinks(principal));
         modelAndView.addObject("mainLink", new Link("Pet Shop", "/shop"));
         modelAndView.addObject("carouselImages", imageService.fetchImages());
         modelAndView.addObject("products", productsService.findProductsByCategory(category));

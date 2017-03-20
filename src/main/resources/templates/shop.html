@@ -49,8 +49,16 @@
                 <li>
                     <a href="#" th:href="${link.link}" th:text="${link.name}">About</a>
                 </li>
+                <li th:if="${principal}!=null">
+                    <a>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-danger">Sign out</button>
+                        </form>
+                    </a>
+                </li>
             </ul>
         </div>
+
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->

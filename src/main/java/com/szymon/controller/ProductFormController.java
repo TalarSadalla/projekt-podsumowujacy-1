@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 /**
  * Created by RENT on 2017-03-18.
  */
@@ -20,7 +22,7 @@ public class ProductFormController {
 
 
     @RequestMapping(value="/product-form", method= RequestMethod.GET)
-    public ModelAndView modelAndView() {
+    public ModelAndView modelAndView(Principal principal) {
         ModelAndView modelAndView = new ModelAndView("productForm");
         modelAndView.addObject("categories",productsService.findAllCategories());
         modelAndView.addObject("product", new Product());
